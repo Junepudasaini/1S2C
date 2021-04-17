@@ -1,0 +1,95 @@
+{% extends "main/header.html" %}
+{% block content %}
+<style>
+img {
+  border-radius: 50%;
+}
+</style>
+    <div class="container">
+    	<div class="col-md-9">
+    		{% if users.pk  %}
+	    	<fieldset class="form-group">
+	    		<legend class="border-bottom mb-4"><h3>Account</h3></legend>
+			<div class="content-section">
+			  	<div class="media">
+			  		<img class="rounded-circle account-img" src="{{ users.profile.image.url }}"width="150" height="150">
+			  		<div class="media-body">
+			  			<br>
+			  			<hr>	  			
+			  			<i><b>User Name :</b> {{users.username}}</i>	
+			  			<br/>
+			  			<hr>	  			
+			  			<i><b>First Name :</b> {{users.first_name}}</i>	
+			  			<br/>
+			  			<hr>	  			
+			  			<i><b>Last Name :</b> {{users.last_name}}</i>	
+			  			<br/>
+			  			<hr>
+			  			<i><b>Email  :</b> {{users.email}}</i>
+			  			<br/>
+			  			<hr>
+			  			<i><b>Last Login :</b> {{users.last_login}}</i>
+			  		</div>
+			  	</div>
+			</div>
+		</fieldset>
+		{% else %}
+		<fieldset class="form-group">
+	    		<legend class="border-bottom mb-4"><h3>Account</h3></legend>
+	    		<p class="z-depth-0">To edit your profile info <a href="{% url 'main:edit_profile' %}"><mark>click here</mark></a></p>
+	    	
+			<div class="content-section">
+			  	<div class="media">
+			  		<img class="rounded-circle account-img" src="{{ user.profile.image.url }}"width="150" height="150">
+			  		<div class="media-body">
+			  			<br>
+			  			<hr>	  			
+			  			<i><b>User Name :</b> {{user.username}}</i>	
+			  			<br/>
+			  			<hr>	  			
+			  			<i><b>First Name :</b> {{user.first_name}}</i>	
+			  			<br/>
+			  			<hr>	  			
+			  			<i><b>Last Name :</b> {{user.last_name}}</i>	
+			  			<br/>
+			  			<hr>
+			  			<i><b>Email  :</b> {{user.email}}</i>
+			  			<br/>
+			  			<hr>
+			  			<i><b>Last Login :</b> {{user.last_login}}</i>
+			  		</div>
+			  	</div>
+			</div>
+		</fieldset>
+         {% endif %}
+        </div>
+        <div class="col-md-4">
+        	<h4><p style="color: #00acc1 ">People in this site:</p></h4>
+        	{% for user in get_users %}
+        	<a href="{% url 'main:profile_with_pk' pk=user.pk %}">
+        		<h5>{{user.username}}</h5>
+        	</a>
+        	{% if not user in friends %}
+        	<a href="{% url 'main:change_friends' operation='add' pk=user.pk %}">
+        		<button type="button"class="btn btn-primary" style="background-color: #00897b ;color: #ffffff">Add friend</button></a>
+        	{% endif %}	
+        	{% endfor %}
+        	<h4><p style="color: #00897b">People in your circle:</p></h4>
+        	{% for friend in friends %}
+        	 <a href="{% url 'main:profile_with_pk' pk=friend.pk %}">
+        		<h5>{{friend.username}}</h5>
+        		</a>
+        		<a href="{% url 'main:change_friends' operation='remove' pk=friend.pk %}">
+        		<button type="button"class="btn btn-warning" style="background-color: #546e7a ;color: #ffffff">Unfriend</button></a>
+        	
+        	<br>
+        	<br>
+        	{% endfor %}
+        	<br>
+        	
+        	
+        </div>
+	
+	</div>	
+		
+{% endblock %}

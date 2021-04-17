@@ -1,0 +1,22 @@
+{% extends "main/header.html" %}
+
+{% block content %}
+<div class="container">
+	<fieldset class="form-group">
+		<legend class="border-bottom mb-4"><h3>Login</h3></legend>
+        <strong>Please enter username and password:</strong>
+		<form class="form-inline" action="" method="POST">
+			{% csrf_token %}
+			<label class="active">Username:</label>
+			<input name="username" class="form-control" type="text" placeholder="Username" value=""/>
+			<label class="active">Password:</label>
+			<input name="password" class="form-control" type="password" placeholder="Password" value=""/>
+			<input class="btn" style="background-color: #01579b ;color: #ffffff" type="submit"value="Login"/>
+		</form>
+	    If you don't already have an account, <a href="/register"><strong>register</strong></a> for one.
+	    
+    </fieldset>
+    <br>
+    <br>
+</div>	
+{% endblock %}

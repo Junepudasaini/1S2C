@@ -1,0 +1,38 @@
+{% extends 'main/header.html' %}
+{% block content %}
+{% if user.is_authenticated %}
+    <br>
+    <br>
+        <div class="row">
+            {% for tut, partone in part_ones.items %}
+                <div class="col s12 m6 l4">
+                    <a href="{{partone}}", style="color:#000">
+                        <div class="card hoverable">
+                            <div class="card-content">
+                                <div class="card-title">
+                                 <strong>{{tut.tutorial_series}}</strong></div>
+                                <p>{{tut.series_summary}}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    <br> 
+{% else %}
+<br>
+<br>
+<br>
+    <div class="card-panel teal lighten-0">
+        <h2 style="text-align: center"><p style="color: white">YOU HAVE TO CREATE AN ACCOUNT TO VIEW THIS PAGE!!!</p></h2>
+        <div class="center">
+            <i class="large material-icons" style="color: #e1f5fe">account_circle</i>
+            <p>Support  Our Website</p>
+            <p class="z-depth-0">To create an account <a href="/register"><mark>click here</mark></a></p>
+        </div>     
+    </div>
+{% endif %}
+<br>
+<br>
+<br>
+{% endblock %}

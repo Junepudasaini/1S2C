@@ -1,0 +1,79 @@
+{% extends 'main/header.html' %}
+{% load static %}
+{% static "img" as baseUrl %}
+
+
+{% block content %}
+    <p class="z-depth-1"><h2 style="text-align: center">All I have learned, I learned from Internet...</h2></p>
+    <div class="container">  
+        <div class="row">
+            {% for cat in categories%}
+                    <div class="col s12 m6 l6">
+                        <a class="waves-effect waves-light" style="color:#000"href="{{cat.category_slug}}"></a>
+                       <div class="card-panel hoverable" style="height:460px;background-color:#FFFFFF; ">
+                        <a class="waves-effect waves-light" style="color:#000"href="{{cat.category_slug}}">
+                        <div class="card-image">
+                           {% if cat.tutorial_category == "Graphics" %} 
+                             <img class="responsive-img" style="width: 250px"src="static/main/img/brain_compute_colour.jpg">
+                           {% endif %}
+                            {% if cat.tutorial_category == "Programming Language" %} 
+                             <img class="responsive-img" style="width: 250px"src="static/main/img/programming.jpg">
+                           {% endif %}
+                            {% if cat.tutorial_category == "Django" %} 
+                             <img class="responsive-img" style="width: 250px"src="static/main/img/django_img.png">
+                           {% endif %}
+                              <span class="card-title">
+                                <h5>{{cat.tutorial_category}}</h5>
+                              </span>
+                        </div>
+                        <div class="card-content">
+                          <p>{{cat.tutorial_summary}}</p>
+                        </div>
+                        <div class="card-action">
+                          <a class href="{{cat.category_slug}}"data-toggle="tooltip" ><button class="btn" style="background-color:white; color:black" type="submit">VISIT</button></a>
+                        </div>
+                      </div>
+                    </div>   
+              {% endfor %}
+          </div>
+      </div>
+      <br>
+      <br>
+      <div class="container">  
+        <div class="row">
+                <div class="col s12 m6 l4">
+                <!-- Promo Content 1 goes here -->
+                  <div class="center">
+                    <i class="large material-icons" style="color: #d50000">subscriptions</i>
+                    <p>Support Us On YouTube</p>
+                    <p class="light center">This is our YouTube link.</p>
+                  </div> 
+                </div> 
+                <div class="col s12 m6 l4">
+                  <!-- Promo Content 2 goes here -->
+                  <div class="center">
+                      <i class="large material-icons" style="color: #263238 ">build</i>
+                      <p>Secure your Future</p>
+                      <p class="light center">We build your future.</p>
+                  </div>
+                </div> 
+                <div class="col s12 m6 l4">
+                  <!-- Promo Content 3 goes here -->
+                  <div class="center">
+                      <i class="large material-icons" style="color: #00b0ff">edit_location</i>
+                      <p>We are everywhere</p>
+                      <p class="light center">You guys are our ❤️</p>
+                  </div>
+                </div>
+          </div>
+        </div>
+
+
+  
+{% endblock %}
+
+
+
+     
+        
+    

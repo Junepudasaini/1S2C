@@ -1,0 +1,42 @@
+<style>
+  div.a {
+  position: absolute;
+  left: 430px;
+  }
+</style>
+
+<div class="navbar-fixed">
+  <nav>
+    <div class="nav-wrapper container">
+      <a class="brand-logo" href="/"><b style="color: white">1Science2Code</b></a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      
+        <ul class="right hide-on-med-and-down">
+          
+            <li><a href="/">Home</a></li>
+            {% if user.is_authenticated %}
+              <li><a href="/profile">{{user.username}}</a></li>
+              <li><a href="/logout">Logout</a></li>
+            {% else %}
+              <li><a href="/register">Register</a></li>
+              <li><a href="/login">Login</a></li>
+            {% endif %}
+        </ul>
+      
+    </div>
+  </nav>
+</div>  
+
+<ul class="sidenav" id="mobile-demo" style="left:0px">
+  
+  <li><a href="/">Home</a></li>
+  {% if user.is_authenticated %}
+      <li><a href="/profile">{{user.username}}</a></li>
+      <li><a href="/logout">Logout</a></li>
+  {% else %}
+      <li><a href="/register">Register</a></li>
+      <li><a href="/login">Login</a></li>
+  {% endif %}   
+</ul>
+
+          
